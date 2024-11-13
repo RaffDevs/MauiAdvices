@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.Core", "MauiAdvices.Core\MauiAdvices.Core.csproj", "{9A17F644-0B23-4418-AC1D-4F02CF7F5DFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.Infrastructure", "MauiAdvices.Infrastructure\MauiAdvices.Infrastructure.csproj", "{50C7ECBE-1EF8-42AB-8EAC-7E93B31983FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.CrossCutting", "MauiAdvices.CrossCutting\MauiAdvices.CrossCutting.csproj", "{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A17F644-0B23-4418-AC1D-4F02CF7F5DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A17F644-0B23-4418-AC1D-4F02CF7F5DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A17F644-0B23-4418-AC1D-4F02CF7F5DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A17F644-0B23-4418-AC1D-4F02CF7F5DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C7ECBE-1EF8-42AB-8EAC-7E93B31983FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C7ECBE-1EF8-42AB-8EAC-7E93B31983FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C7ECBE-1EF8-42AB-8EAC-7E93B31983FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C7ECBE-1EF8-42AB-8EAC-7E93B31983FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
