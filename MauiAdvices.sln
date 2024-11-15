@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.Infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.CrossCutting", "MauiAdvices.CrossCutting\MauiAdvices.CrossCutting.csproj", "{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.Mobile", "MauiAdvices.Mobile\MauiAdvices.Mobile.csproj", "{3A4CEDD6-A9F5-46EC-91EC-E24F657A04EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAdvices.Interactors", "MauiAdvices.Interactors\MauiAdvices.Interactors.csproj", "{31629F41-A843-4A43-8ED7-503D983B0159}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5529DE1A-0DBF-479E-B40A-F2B2F0EF5C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A4CEDD6-A9F5-46EC-91EC-E24F657A04EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A4CEDD6-A9F5-46EC-91EC-E24F657A04EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A4CEDD6-A9F5-46EC-91EC-E24F657A04EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A4CEDD6-A9F5-46EC-91EC-E24F657A04EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31629F41-A843-4A43-8ED7-503D983B0159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31629F41-A843-4A43-8ED7-503D983B0159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31629F41-A843-4A43-8ED7-503D983B0159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31629F41-A843-4A43-8ED7-503D983B0159}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

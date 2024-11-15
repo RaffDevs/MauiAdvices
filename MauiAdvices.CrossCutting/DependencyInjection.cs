@@ -7,15 +7,16 @@ namespace MauiAdvices.CrossCutting;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddHttpClient(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureHttpClient(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSingleton<HttpClient>();
         return services;
     }
 
-    public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<AdviceService>();
+        services.AddScoped<TranslatorService>();
         
         return services;
     }
