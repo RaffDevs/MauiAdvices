@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarForegroundColor="{StaticResource Primary}"
+    Shell.TabBarTitleColor="{StaticResource Primary}"
+    Shell.UnselectedColor="{StaticResource Gray100}"
+    Title="MauiAdvices.Mobile"
+    x:Class="MauiAdvices.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:pages="clr-namespace:MauiAdvices.Mobile.Src.Pages"
+    xmlns:pages1="clr-namespace:MauiAdvices.Mobile.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <TabBar>
+        <Tab Icon="ic_home" Title="HOME">
+            <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" />
+        </Tab>
+        <Tab Icon="ic_fav" Title="FAVORITE">
+            <ShellContent ContentTemplate="{DataTemplate pages1:FavoritesPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

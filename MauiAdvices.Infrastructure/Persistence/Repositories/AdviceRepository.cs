@@ -1,35 +1,42 @@
+using LiteDB;
+using LiteDB.Async;
 using MauiAdvices.Core.Entities;
 using MauiAdvices.Core.Repositories;
-using MauiAdvices.Infrastructure.Persistence.Context;
-using Microsoft.EntityFrameworkCore;
+using MauiAdvices.Infrastructure.Persistence.Database;
 
 namespace MauiAdvices.Infrastructure.Persistence.Repositories;
 
 public class AdviceRepository : IAdviceRepository
 {
-    private readonly MauiAdvicesDatabaseContext _context;
-
-    public AdviceRepository(MauiAdvicesDatabaseContext context)
+    private readonly AdvicesDatabase _databaseFactory;
+    private readonly LiteDatabaseAsync _database;
+    private const string CollectionName = "advices";
+    public AdviceRepository(AdvicesDatabase factory)
     {
-        _context = context;
+        _databaseFactory = factory;
+        _database = _databaseFactory.GetDatabase();
+
     }
 
     public async Task<IEnumerable<Advice>> Get()
     {
-        return await _context.Advices.ToListAsync();
+        var collection = _database.GetCollection<Advice>(CollectionName);
+        var advices = await collection.FindAllAsync();
+        return advices.ToList();
     }
 
-    public async Task<Advice> Create(Advice advice)
+    public async Task Create(Advice advice)
     {
-        var insertedItem = _context.Advices.Add(advice);
-        await _context.SaveChangesAsync();
-
-        return insertedItem.Entity;
+        var collection = _database.GetCollection<Advice>(CollectionName);
+        await collection.InsertAsync(advice);
+        await collection.EnsureIndexAsync(c => c.Text);
+        await _database.CheckpointAsync();
     }
 
-    public async Task Delete(Advice advice)
+    public async Task Delete(int id)
     {
-        _context.Advices.Remove(advice);
-        await _context.SaveChangesAsync();
+        var collection = _database.GetCollection<Advice>(CollectionName);
+        await collection.DeleteAsync(id);
+        await _database.CheckpointAsync();
     }
 }

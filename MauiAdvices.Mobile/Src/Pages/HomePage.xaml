@@ -3,57 +3,74 @@
 <ContentPage
     x:Class="MauiAdvices.Mobile.Src.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:converter="clr-namespace:MauiAdvices.Mobile.Converters"
+    xmlns:local="clr-namespace:MauiAdvices.Mobile.Pages"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Grid ColumnDefinitions="*" RowDefinitions="2*,1*">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanNegationConverter x:Key="BooleanNegationConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="1*,4*,1*">
         <Label
-            FontSize="24"
+            FontSize="{StaticResource Medium2}"
+            Grid.Column="0"
             Grid.Row="0"
             HorizontalOptions="Center"
-            Margin="0,24,0,0"
-            Text="Que tal um conselho?" />
+            Text="Can I give you an advice?"
+            VerticalOptions="Center"/>
 
-        <VerticalStackLayout Grid.Row="0" VerticalOptions="Center">
-            <Frame
-                BackgroundColor="{StaticResource Gray100}"
-                BorderColor="Transparent"
-                Margin="16,0">
-                <Grid
-                    ColumnDefinitions="*"
-                    MinimumHeightRequest="168"
-                    RowDefinitions="2*, 1*">
-                    <Label
-                        FontSize="20"
-                        Grid.Row="0"
-                        HorizontalTextAlignment="Center"
-                        Margin="8,4"
-                        Text="Deus ajuda quem cedo madruga!"
-                        VerticalOptions="Center" />
-
-                    <Label
-                        Grid.Row="1"
-                        HorizontalOptions="End"
-                        Margin="16"
-                        Text="Traduzir"
-                        TextColor="{StaticResource Primary}"
-                        VerticalOptions="End" />
-                </Grid>
-            </Frame>
-            <Image
-                HeightRequest="30"
-                Margin="0,16"
-                Source="ic_btn_fav"
-                WidthRequest="30">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
-                </Image.GestureRecognizers>
-            </Image>
-        </VerticalStackLayout>
-
-        <Button
+        <Grid
+            ColumnDefinitions="*, 32*, *"
+            Grid.Column="0"
             Grid.Row="1"
-            Margin="16,0,16,16"
-            Text="Hello"
-            VerticalOptions="End" />
+            Margin="0,32,0,0"
+            RowDefinitions="1*, 0.4*">
+            <Frame
+                BackgroundColor="WhiteSmoke"
+                BorderColor="Transparent"
+                Grid.Column="1"
+                Grid.Row="0">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <Label
+                        FontSize="{StaticResource Medium1}"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding CurrentRandomAdvice.Text}"/>
+                </StackLayout>
+            </Frame>
+            <ImageButton
+                Command="{Binding ExecuteSaveAdviceCommand}"
+                Grid.Column="1"
+                Grid.Row="1"
+                IsEnabled="{Binding IsProcessing, Converter={StaticResource BooleanNegationConverter}}"
+                Margin="0,8,0,0"
+                VerticalOptions="Start"
+                mi:MauiIcon.Value="{mi:Cupertino Icon=Heart,
+                                    IconColor=Black,
+                                    IconSize={StaticResource Large1}}"/>
+        </Grid>
 
+        <Grid
+            Grid.Row="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Button
+                Command="{Binding ExecuteGetRandomAdviceCommand}"
+                IsVisible="{Binding IsProcessing, Converter={StaticResource BooleanNegationConverter}}"
+                Text="GET ADVICE"/>
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsProcessing}"
+                IsVisible="{Binding IsProcessing}"
+                VerticalOptions="Center"/>
+        </Grid>
     </Grid>
 </ContentPage>

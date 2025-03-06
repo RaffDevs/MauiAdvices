@@ -6,8 +6,8 @@ namespace MauiAdvices.Infrastructure.Services;
 
 public class TranslatorService
 {
-    private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
+    private readonly HttpClient _httpClient;
 
     public TranslatorService(HttpClient httpClient, IConfiguration configuration)
     {

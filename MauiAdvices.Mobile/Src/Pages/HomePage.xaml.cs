@@ -1,20 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MauiAdvices.Mobile.Pages;
 
 namespace MauiAdvices.Mobile.Src.Pages;
 
 public partial class HomePage : ContentPage
 {
-    public HomePage()
+    private readonly MainViewModel _viewModel;
+    public HomePage(MainViewModel viewModel)
     {
+        _viewModel = viewModel;
         InitializeComponent();
+        BindingContext = _viewModel;
     }
 
-    private void TapGestureRecognizer_OnTapped(object? sender, TappedEventArgs e)
+    protected override async void OnAppearing()
     {
-        Console.WriteLine("Hello Fellas");
+        base.OnAppearing();
+        _viewModel.ExecuteGetRandomAdviceCommand.Execute(null);
     }
 }

@@ -1,9 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAdvices.Mobile.Src.Pages.FavoritesPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+<ContentPage
+    x:Class="MauiAdvices.Mobile.Pages.FavoritesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:converter="clr-namespace:MauiAdvices.Mobile.Converters"
+    xmlns:local="clr-namespace:MauiAdvices.Mobile.Pages"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="1*,5*" RowSpacing="{StaticResource Huge1}">
+        <Label
+            FontSize="{StaticResource Medium2}"
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Margin="0,32,0,0"
+            Text="Favorites"
+            VerticalOptions="Center" />
+
+        <CollectionView
+            Grid.Row="1"
+            IsVisible="{Binding IsProcessing, Converter={StaticResource BooleanNegationConverter}}"
+            ItemsSource="{Binding FavoriteAdvices}"
+            Margin="8,0">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="{StaticResource Small4}" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame>
+                        <Grid RowDefinitions="2*,10*" RowSpacing="{StaticResource Medium1}">
+                            <Label Grid.Row="0" Text="{Binding Text}" />
+                            <FlexLayout Grid.Row="1" JustifyContent="SpaceBetween" >
+                                <Button
+                                    BackgroundColor="Transparent"
+                                    Padding="0"
+                                    Text="Translate"
+                                    TextColor="{StaticResource Primary}" />
+                                <ImageButton
+                                    Clicked="HandleDeleteAdvice"
+                                    CommandParameter="{Binding Id}"
+                                    Scale="0"
+                                    mi:MauiIcon.Value="{mi:Cupertino Icon=Trash,
+                                                                     IconColor=Red}" />
+                            </FlexLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ActivityIndicator
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsProcessing}"
+            IsVisible="{Binding IsProcessing}"
+            VerticalOptions="Center" />
+    </Grid>
+
+
 </ContentPage>

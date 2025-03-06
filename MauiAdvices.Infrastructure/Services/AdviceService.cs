@@ -19,7 +19,7 @@ public class AdviceService
         {
             Scheme = "https",
             Host = "api.adviceslip.com",
-            Path = "Advice"
+            Path = "advice"
         };
 
         var uri = uriBuilder.Uri;
@@ -34,6 +34,5 @@ public class AdviceService
         {
             throw new JsonException(ex.Message);
         }
-        
     }
 }
